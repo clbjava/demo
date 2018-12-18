@@ -1,14 +1,12 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Callable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.demo.util.CookieUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +34,8 @@ public class Control2 {
 		map.put("contactName","!");
 		map.put("phone","15111680080");
 		result.put("data", list);
+
+		CookieUtils.writeCookie(response, "cookies", UUID.randomUUID().toString());
 		 return result;
 	}
 	

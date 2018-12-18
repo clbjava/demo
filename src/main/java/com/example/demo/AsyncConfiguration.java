@@ -85,7 +85,7 @@ public class AsyncConfiguration extends WebMvcConfigurationSupport {
 	 * 跨域资源共享(CORS)
 	 * @param registry
 	 */
-	@Override
+	/*@Override
 	protected void addCorsMappings(CorsRegistry registry) {
 		//设置允许跨域的路径
 		registry.addMapping("/**")
@@ -97,6 +97,6 @@ public class AsyncConfiguration extends WebMvcConfigurationSupport {
 				.allowedMethods("*")
 				//跨域允许时间
 				.maxAge(3600);
-	}
+	}*/
 
 }
