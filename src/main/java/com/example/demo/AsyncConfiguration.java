@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.context.request.async.TimeoutCallableProcessingInterceptor;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Configuration
@@ -80,6 +81,22 @@ public class AsyncConfiguration extends WebMvcConfigurationSupport {
         configurer.favorPathExtension(false);
     }*/
 
-
+	/**
+	 * 跨域资源共享(CORS)
+	 * @param registry
+	 */
+	@Override
+	protected void addCorsMappings(CorsRegistry registry) {
+		//设置允许跨域的路径
+		registry.addMapping("/**")
+				//设置允许跨域请求的域名
+				.allowedOrigins("*")
+				//是否允许证书 不再默认开启
+				.allowCredentials(true)
+				//设置允许的方法
+				.allowedMethods("*")
+				//跨域允许时间
+				.maxAge(3600);
+	}
 
 }
