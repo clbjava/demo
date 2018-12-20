@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.demo.util.CookieUtils;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +44,7 @@ public class Control2 {
 	}
 	
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public List<Map<String,Object>>get(HttpServletRequest request, HttpServletResponse response) throws InterruptedException {
+	public List<Map<String,Object>> get(HttpServletRequest request, HttpServletResponse response) throws InterruptedException {
 		Thread.sleep(5000);
 		List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
 		Map<String,Object> map=new HashMap<String,Object>();
@@ -50,6 +54,30 @@ public class Control2 {
 		map.put("contactName","!");
 		map.put("phone","15111680080");
 		 return list;
+	}
+
+	@RequestMapping(value = "get/login", method = RequestMethod.GET)
+	public User loginGet(HttpServletRequest request, HttpServletResponse response) throws InterruptedException, JsonProcessingException {
+		LOG.info("get {}",mapper.writeValueAsString(request.getParameterMap()) );
+
+		User user=new User();
+		user.setName("hello");
+		return user;
+	}
+
+	/**
+	 * @param map
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws InterruptedException
+	 */
+	@RequestMapping(value = "post/login", method = RequestMethod.POST)
+	public User loginPost(@RequestBody(required = false) Map<String,Object> map,HttpServletRequest request, HttpServletResponse response) throws InterruptedException, JsonProcessingException {
+		LOG.info("get {}",mapper.writeValueAsString(map) );
+		User user=new User();
+		user.setName("hello");
+		return user;
 	}
 	
 	@RequestMapping(value = "/post", method = RequestMethod.POST)

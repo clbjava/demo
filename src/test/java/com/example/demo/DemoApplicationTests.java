@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 public class DemoApplicationTests {
 
+	/*
 	private final static Logger LOG = LoggerFactory.getLogger(DemoApplicationTests.class);
 	private final ObjectMapper mapper = new ObjectMapper();
 
@@ -81,19 +82,19 @@ public class DemoApplicationTests {
 		LOG.info(mapper.writeValueAsString(future6));
 		LOG.info("end Time : " + (System.currentTimeMillis() - start1));
 	}
-/*
+*//*
 	static <T> CompletableFuture<List<T>> sequence(List<CompletableFuture<T>> futures) {
 		CompletableFuture<Void> allDoneFuture = CompletableFuture
 				.allOf(futures.toArray(new CompletableFuture[futures.size()]));
 		return allDoneFuture
 				.thenApply(v -> futures.stream().map(future -> future.join()).collect(Collectors.<T>toList()));
-	}*/
+	}*//*
 
-	/**
+	*//**
 	 * 半异步操作
 	 * @param futures
 	 * @return
-	 */
+	 *//*
 	static <T> List<T> sequence(List<CompletableFuture<T>> futures) {
 		if (CollectionUtils.isEmpty(futures)) {
 			return Collections.<T>emptyList();
@@ -106,6 +107,6 @@ public class DemoApplicationTests {
 				return null;
 			}
 		}).collect(Collectors.<T>toList());
-	}
+	}*/
 
 }
