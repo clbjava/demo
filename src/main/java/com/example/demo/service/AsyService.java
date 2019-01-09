@@ -6,8 +6,8 @@ import com.example.demo.Person;
 
 public interface AsyService {
 	
-	public CompletableFuture<Person> aysSubmit(String msg) throws Exception;
+	CompletableFuture<Person> aysSubmit(String msg) throws Exception;
 	
-	public Person aysSubmit1(String msg);
+	Person aysSubmit1(String msg);
 
 }

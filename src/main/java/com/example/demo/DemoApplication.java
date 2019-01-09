@@ -56,7 +56,7 @@ public class DemoApplication {
 		String[] arg= {"jjj=kkk"};
 		//SpringApplication.run(DemoApplication.class, args);
 		SpringApplication applcation=new SpringApplication();
-		applcation.run(DemoApplication.class, arg);
+		SpringApplication.run(DemoApplication.class, arg);
 		LOG.info("++++++++++:{}",arg);	
 }
 

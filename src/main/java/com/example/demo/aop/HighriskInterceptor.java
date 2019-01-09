@@ -21,7 +21,7 @@ public class HighriskInterceptor {
 	public Object doAround(ProceedingJoinPoint point) throws Throwable {
 		
 		LOG.info("doAround:{}",mapper.writeValueAsString(point.getArgs()));
-		Object args[]=point.getArgs();
+        Object[] args = point.getArgs();
 		if(args[0] instanceof User) {
 			User req=(User)args[0];
 			if(req.getAge().equals("20")) {

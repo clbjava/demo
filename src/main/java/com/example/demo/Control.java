@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,15 +51,15 @@ public class Control {
 
 	@RequestMapping(value = "/upload/batch", method = RequestMethod.POST)
 	public @ResponseBody String batchUpload(@RequestParam("file") MultipartFile[] file,
-			@RequestParam("file1") MultipartFile file1,HttpServletRequest request) throws UnsupportedEncodingException, IOException {
+			@RequestParam("file1") MultipartFile file1,HttpServletRequest request) throws IOException {
 		
 		System.out.println(file.length);
 		for(MultipartFile index:file) {
 			System.out.println(index.getOriginalFilename()+"---"+index.getName());
-			System.out.println(index.getOriginalFilename()+(new String(index.getBytes(),"UTF-8")));
+			System.out.println(index.getOriginalFilename()+(new String(index.getBytes(), StandardCharsets.UTF_8)));
 		}
 		System.out.println(file1.getOriginalFilename()+"--ff-"+file1.getName());
-		System.out.println((String)request.getParameter("tx"));
+		System.out.println(request.getParameter("tx"));
 		return "Y";
 	}
 
